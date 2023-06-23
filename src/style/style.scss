@@ -1,0 +1,739 @@
+#app {
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+h1 , h2 , h3 ,h4 , h5  , a , p 
+{ 
+  font-family: 'Montserrat';
+}
+h1 
+{ 
+  font-size:36px ;
+}
+h2
+{ 
+  font-size: 30px ;
+}
+h3
+{ 
+  font-size: 25px ;
+}
+p 
+{ 
+  font-size: 16px ;
+}
+$gray : #D4D4D4;
+$st-gray : #8B8B8B;
+$main : #00CA69;
+$light: #FAFAFA;
+$dark : #333333;
+$btn-yell : #FFC702;
+$inverse: #A93DFF;
+$active : #FF5C16;
+
+body {
+  flex-direction: column;
+}
+@mixin button($color) 
+{
+  border: 1px solid $color;
+  color: $color;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  padding: 15px;
+  background-color: transparent;
+  transition: 0.2s;
+  width: 60%;
+  text-transform: capitalize;
+  border-radius: 5px;
+}
+
+@mixin activeButton($color) 
+{
+  @include button($color);
+  color: $dark;
+  cursor: pointer;
+  border: 1px solid $color;
+}
+
+
+.btn {
+  &.yellow 
+  {
+    @include button($dark);
+
+    &:hover 
+    {
+      @include activeButton($btn-yell);
+    }
+
+    &:active 
+    {
+      scale: 0.97;
+    }
+  }
+}
+
+.btn {
+  &.green 
+  {
+    @include button($light);
+
+    &:hover 
+    {
+      @include activeButton($dark);
+    }
+
+    &:active 
+    {
+      scale: 0.97;
+    }
+  }
+}
+
+.btn {
+  &.dark
+  {
+    @include button($light);
+
+    &:hover 
+    {
+      @include activeButton($dark);
+    }
+
+    &:active 
+    {
+      scale: 0.97;
+    }
+  }
+}
+
+.btn 
+{
+  &.purple 
+  {
+    @include button($inverse);
+
+    &:hover 
+    {
+      @include activeButton($active);
+    }
+
+    &:active 
+    {
+      scale: 0.97;
+    }
+  }
+}
+
+.wrapper 
+{
+  width: 1100px;
+  margin: 0 auto;
+}
+
+%container-v 
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+%container-h
+ {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header 
+{
+  margin-top: 50px;
+
+  .wrapper
+  {
+    margin: 0 auto;
+    @extend %container-v;
+    nav 
+    {
+      @extend %container-h;
+      width: 100%;
+      .link
+      { 
+        height: 40px;
+        a 
+        {
+          font-size: 20px;
+          color: $st-gray;
+          transition: 400ms ;
+          padding-bottom:12px  ;
+          border-bottom: 2px solid transparent;
+          &:hover 
+          {  
+            color: $dark;
+            border-bottom: 2px solid $main ; 
+          }
+      }
+       
+        }
+      }
+  }
+  
+}
+.main 
+{ 
+  margin-top: 50px;
+  .wrapper 
+  { 
+    @extend %container-v;
+    .info-box 
+    { 
+      border-radius: 10px ;
+      background-color: $main;
+      width: 100%;
+      @extend %container-v ; 
+      text-align: center ;
+      .wrapper-in
+      { 
+        width: 60%;
+        h2
+        { 
+          font-weight: 700 ;
+          color: $light  ;
+          margin-top: 20px ;
+          margin-bottom:50px ;
+        }
+        svg
+        { 
+          margin-top: 25px;
+        }
+      }
+     
+    }
+    .container
+    { 
+      @extend %container-v; 
+      width: 100% ;
+      .info-container 
+      { 
+        border : 1px solid $st-gray ; 
+        color: $st-gray;
+        width: 100% ;
+        padding: 20px 0 ;
+        border-radius: 10px ;
+        text-align: center;
+        margin-bottom: 15px ;
+        transition: 400ms;
+        cursor: pointer;
+        &:first-child
+        { 
+          margin-top: 30px ;
+        }
+        &:hover 
+        { 
+          background-color: $inverse;
+          border: 1px solid $inverse;
+          color: $light ;
+        }
+      }
+    }
+
+   .content 
+   { 
+    margin-top: 30px ;
+    .cards
+    { 
+      margin-top: 10px ; 
+      @extend %container-h ;
+      .card 
+      {  
+        @extend %container-v; 
+        background-color: $dark;
+        border-radius:10px  ;
+        width: 27% ;
+        text-align: center;
+        padding: 20px 10px  ;
+        color: $light ;
+        h3 
+        { 
+          margin: 10px 0 ;
+        }
+      }
+    }
+   }
+  }
+}
+.info 
+{ 
+  margin-top: 70px ;
+  .name
+  { 
+    width: 100%;
+    text-align: center;
+    color: $light ;
+    background-color: $main;
+    padding: 20px 0 ;
+  }
+  .wrapper
+  { 
+    @extend %container-v ; 
+    .desc 
+    { 
+      text-align: center ;
+      margin: 30px 0 ;
+      p 
+      {
+        font-size: 20px ;
+      }
+    }
+    .desc-contain
+    { 
+      @extend %container-h ; 
+      align-items: stretch ;
+      .card
+      { 
+        width: 23% ;
+        border: 2px solid $st-gray;
+        @extend %container-v ; 
+        padding: 25px 0 ;
+        text-align: center ;
+        transition: 400ms ;
+        h1 
+        { 
+          margin: 10px 0 ;
+        }
+        &:hover 
+        { 
+          border: 2px solid $main ;
+          border-radius: 12px ;
+        }
+      }
+    }
+    .hist
+    { 
+      margin-top:50px  ;
+      h2
+      { 
+        text-align: center; 
+        margin-bottom: 50px 
+      }
+       .our-way
+    { 
+      @extend %container-h ;
+      .container 
+      { 
+        width: 45%; 
+        @extend %container-v ; 
+        text-align: center;
+        .green-cont
+        { 
+          @extend %container-v; 
+          .year
+          { 
+            background-color: $main;
+            width: 15%;
+            border-radius: 10px ;
+            padding: 5px  20px ;
+            margin-bottom:10px  ;
+            h3 
+            { 
+              margin: 0 ;
+              color: $light;
+            }
+          }
+          margin-bottom: 50px ;
+          h3
+          { 
+            color: $main;
+            margin-bottom: 10px;
+          }
+          p
+          { 
+            color: $main;
+          }
+        }
+        .dark-cont
+        { 
+          @extend %container-v; 
+          .year
+          { 
+            background-color: $dark;
+            width: 15%;
+            border-radius: 10px ;
+            padding: 5px  20px ;
+            margin-bottom:10px  ;
+            h3 
+            { 
+              margin: 0 ;
+              color: $light;
+            }
+          }
+          margin-bottom: 50px ;
+          h3
+          { 
+            color: $dark;
+            margin-bottom: 10px;
+          }
+          p
+          { 
+            color: $dark;
+          }
+        }
+      }
+    }
+    }
+   
+  }
+} 
+.tariffs
+{ 
+  .name 
+  { 
+    width: 100%;
+    text-align: center;
+    background-color: $inverse;
+    padding: 20px 0 ;
+    h1
+    { 
+      color: $light;
+    }
+  }
+  .wrapper
+  { 
+    .tariff-list 
+    { 
+      margin-top: 50px ; 
+      @extend %container-h;
+      align-items:center;
+      .t-desc , .t-card
+      { 
+        width: 20%;
+        display: flex;
+        flex-direction: column ;
+        gap: 25px ;
+        align-items: center;
+      } 
+      .t-desc 
+      { 
+        align-items: flex-start;
+        .cont
+        { 
+          width: 100% ;
+          padding-bottom: 5px;
+          &:nth-child(1)
+          { 
+            border-bottom: 1px solid $st-gray;
+          }
+          &:nth-child(2)
+          { 
+            border-bottom: 1px solid $st-gray;
+          }
+        }
+      }
+      .t-card 
+      { 
+        margin-top: 55px;
+        .hat
+        { 
+         
+          width: 100%;
+          background-color: $main;
+          border-radius:10px 10px 0 0 ;
+          text-align: center;
+          padding: 10px 0 ;
+          p
+          { 
+            color: $light;
+          }
+        }
+        .cont
+        {
+          width: 100%;
+          text-align: center;
+          &:nth-child(2)
+            { 
+              border-bottom: 1px solid $st-gray;
+              padding-bottom:5px ; 
+            }
+          &:nth-child(3)
+            { 
+              border-bottom: 1px solid $st-gray;
+              padding-bottom:5px ;
+            }
+        }
+
+        .btn
+        { 
+          background-color: $btn-yell;
+          margin-top: 50px ;
+          padding: 10px 20px;
+          &:hover
+          { 
+            background-color: transparent;
+          } 
+
+        }
+      }
+    }
+
+    .tariff-ch
+    { 
+      margin:50px 0 ;
+      width: 100% ;
+      border-radius: 10px ;
+      background-color: $main ;
+      text-align: center;
+      padding: 30px 0 ;
+      h1
+      { 
+        color: $light;
+        font-weight: 700;
+      }
+      .to-tariff
+      { 
+        width: 85% ;
+        margin:  0 auto ; 
+        @extend %container-h;
+        .container 
+        {
+           margin:40px 0  ; 
+           p
+           { 
+            color: $light;
+            font-size: 20px;
+           }
+          .value
+          { 
+            
+            margin-top: 10px ;
+            padding-bottom: 5px;
+            border: none ;
+            background-color: transparent ;
+            border-bottom: 1px solid $light;
+            outline: none ;
+            text-align: center;
+            color: $light;
+            font-size: 20px ;
+
+          }
+        } 
+
+      }
+    }
+  }
+}
+.contacts
+{ 
+  margin-top: 50px ; 
+  @extend %container-v;
+  .head
+  { 
+    width: 100%; 
+    text-align: center;
+    background-color: $dark;
+    padding: 20px 0 ;
+    h1
+    { 
+      color : $light ;
+    }
+     
+
+    
+  }
+  .wrapper 
+  { 
+    p
+    { 
+      margin:50px 0;
+    }
+    .container 
+    { 
+      text-align: center  ;
+      margin: 0 auto;
+      width: 40%;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      gap: 30px;
+      background-color: transparent;
+      border: 1px solid $dark;
+      border-radius: 20px;  
+      .contact-methods{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        gap: 20px;
+        .btn 
+        { 
+          border: none ;
+          font-size: 20px ; 
+          background-color: transparent;
+          border-bottom: 1px solid $st-gray;
+          color: $st-gray;
+          padding-bottom: 10px ;
+          &:active
+          { 
+            border-bottom: 1px solid $active ;  
+            color: $active; 
+          }
+        }
+      }
+      .input-container{
+        @extend %container-h;
+        justify-content: flex-start;
+        gap: 10px;
+        border: 1px solid $dark;
+        border-radius: 6px;
+        .em-svg{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: $dark;
+          padding: 16px;
+        }
+        .tel-svg{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: $dark;
+          padding: 16px;
+        }
+        input{
+          border: none ;
+
+          font-size: 20px;
+          font-weight: 500;
+          color: $dark;
+        }
+        textarea{
+          padding: 20px 10px 40px;
+          width: 100%;
+          border: none ;
+          font-size: 20px;
+          font-weight: 500;
+          color: $dark;
+        }
+      }
+      .btn.yellow{
+        width: 100%;
+        background-color: $btn-yell;
+        border: none;
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+footer
+{ 
+  
+  .head
+  { padding: 50px 0 ;
+    text-align: center; 
+  }
+
+  .product-list
+  { 
+    @extend %container-h ; 
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    margin: 0 auto;
+    .cards
+    { 
+      .g-card
+      { 
+        @extend %container-v; 
+        gap: 30px;
+        background-color: $main ;
+        padding: 30px 20px ;
+        text-align: center;
+        .btn 
+        { 
+          &:hover 
+          { 
+           background-color: $active;
+          }
+        }
+      }
+      }
+      .d-card
+      { 
+        @extend %container-v; 
+        gap: 30px;
+        text-align: center;
+        background-color: $dark  ;
+        padding: 30px 20px ;
+        .btn 
+        { 
+          &:hover 
+          { 
+           background-color: $light ;
+          }
+        }
+        
+      }
+      .in-card
+      { 
+        @extend %container-v; 
+        gap: 30px;
+        text-align: center;
+        background-color: $inverse;
+        padding: 30px 20px ;
+        .btn 
+        { 
+          &:hover 
+          { 
+           background-color: $btn-yell;
+          }
+        }
+      }
+      .g-card , .d-card , .in-card
+      { 
+        h3 
+        { 
+          font-size: 20px ;
+        }
+        h3 , h2 
+        { 
+          color: $light;
+        }
+      } 
+    
+  }
+  .under-footer
+  { background-color: $btn-yell;
+    margin-top: 80px ;
+    .wrapper
+    { 
+      @extend %container-h ; 
+      padding: 20px 0 ;
+      .links
+      { 
+        padding: 10px ;
+        @extend %container-v ;
+        align-items: flex-start;
+        gap: 10px ;
+        font-size: 20px;
+        .link
+        { 
+          a 
+          { 
+            transition: 400ms ;
+            color: $dark;
+            &:hover 
+            { 
+              color: $inverse;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
